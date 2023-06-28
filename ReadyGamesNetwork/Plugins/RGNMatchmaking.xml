@@ -4,5 +4,170 @@
         <name>RGNMatchmaking</name>
     </assembly>
     <members>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.SetRGNCore(RGN.IRGNRolesCore)">
+            <summary>
+            Sets the Ready Games Network (RGN) core reference.
+            </summary>
+            <param name="rgnCore">The RGN core to be set.</param>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Init">
+            <summary>
+            Initializes the MatchmakingModule.
+            This method is currently empty and can be filled with initial setup logic if needed in the future.
+            </summary>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Dispose">
+            <summary>
+            Releases all resources used by the MatchmakingModule.
+            This method is currently empty and can be filled with cleanup logic if needed in the future.
+            </summary>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.GetJoinOpenMatchesAsync(System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously gets a list of open matches that the user can join
+            </summary>
+            <param name="limit">An integer indicating the maximum number of matches to retrieve.</param>
+            <param name="startAfter">An optional parameter representing a matches id after which to
+            start retrieving the matches. The default is an empty string.</param>
+            <param name="cancellationToken">Cancellation token to cancel the async operation. Optional</param>
+            <returns>
+            A Task that represents the asynchronous operation.
+            The Task result contains a list of objects, which are the open to join matches.
+            </returns>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.GetVoteOpenMatchesAsync(System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously gets a list of open matches that the user can vote. Some matches can have voting enabled.
+            If the voting is enabled the users can vote for the match participants
+            </summary>
+            <param name="limit">An integer indicating the maximum number of matches to retrieve.</param>
+            <param name="startAfter">An optional parameter representing a matches id after which to
+            start retrieving the matches. The default is an empty string.</param>
+            <param name="cancellationToken">Cancellation token to cancel the async operation. Optional</param>
+            <returns>
+            A Task that represents the asynchronous operation.
+            The Task result contains a list of objects, which are the open to vote matches.
+            </returns>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.GetFinishedMatchesAsync(System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously gets a list of finished matches
+            </summary>
+            <param name="limit">An integer indicating the maximum number of matches to retrieve.</param>
+            <param name="startAfter">An optional parameter representing a matches id after which to
+            start retrieving the matches. The default is an empty string.</param>
+            <param name="cancellationToken">Cancellation token to cancel the async operation. Optional</param>
+            <returns>
+            A Task that represents the asynchronous operation.
+            The Task result contains a list of objects, which are the finished matches for current app.
+            </returns>
+        </member>
+        <member name="T:RGN.Modules.Matchmaking.MatchmakingData">
+            <summary>
+            Represents the data required for the matchmaking process.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.id">
+            <summary>
+            Gets or sets the identifier of the matchmaking data.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.appId">
+            <summary>
+            Gets or sets the application identifier.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.type">
+            <summary>
+            Gets or sets the type of the matchmaking.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.finishType">
+            <summary>
+            Gets or sets the finish type of the matchmaking.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.startType">
+            <summary>
+            Gets or sets the start type of the matchmaking.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.maxUsers">
+            <summary>
+            Gets or sets the maximum number of users for the matchmaking.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.isStarted">
+            <summary>
+            Gets or sets a value indicating whether the matchmaking has started.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.votingEnabled">
+            <summary>
+            Gets or sets a value indicating whether voting is enabled for the matchmaking.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.oncePerUserVoting">
+            <summary>
+            Gets or sets a value indicating whether a user can vote only once in the matchmaking.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.createdBy">
+            <summary>
+            Gets or sets the user who created the matchmaking.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.createdAt">
+            <summary>
+            Gets or sets the timestamp when the matchmaking was created.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.updatedAt">
+            <summary>
+            Gets or sets the timestamp when the matchmaking was last updated.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.participants">
+            <summary>
+            Gets or sets the list of participants in the matchmaking.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.votes">
+            <summary>
+            Gets or sets the list of votes in the matchmaking.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.participantsScore">
+            <summary>
+            Gets or sets the scores of the participants in the matchmaking.
+            </summary>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingData.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="T:RGN.Modules.Matchmaking.Vote">
+            <summary>
+            Represents a vote in the matchmaking process.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.Vote.voterId">
+            <summary>
+            Gets or sets the identifier of the voter.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.Vote.participantId">
+            <summary>
+            Gets or sets the identifier of the participant that the vote is for.
+            </summary>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.Vote.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
     </members>
 </doc>
