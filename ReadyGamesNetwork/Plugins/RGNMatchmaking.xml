@@ -264,11 +264,13 @@
         <member name="F:RGN.Modules.Matchmaking.MatchmakingData.createdAt">
             <summary>
             The timestamp representing when the match was created.
+            in milliseconds since midnight, January 1, 1970 UTC.
             </summary>
         </member>
         <member name="F:RGN.Modules.Matchmaking.MatchmakingData.updatedAt">
             <summary>
             The timestamp representing when the matchmaking data was last updated.
+            in milliseconds since midnight, January 1, 1970 UTC.
             </summary>
         </member>
         <member name="F:RGN.Modules.Matchmaking.MatchmakingData.participants">
