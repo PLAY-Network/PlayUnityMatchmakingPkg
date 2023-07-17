@@ -36,7 +36,7 @@
             This method is currently empty and can be filled with cleanup logic if needed in the future.
             </summary>
         </member>
-        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Admin.DeleteVirtualItemsByIdsAsync(System.String)">
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Admin.DeleteMatchesByAppIdAsync(System.String)">
             <summary>
             Asynchronously deletes all matches for specific app id
             </summary>
