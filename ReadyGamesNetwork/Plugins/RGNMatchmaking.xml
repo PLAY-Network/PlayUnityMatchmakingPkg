@@ -15,7 +15,7 @@
         </member>
         <member name="T:RGN.Modules.Matchmaking.MatchmakingModule.Admin">
             <summary>
-            Handle critical operations on Matchmaking data
+            Handles critical operations on Matchmaking data
             </summary>
         </member>
         <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Admin.SetRGNCore(RGN.IRGNRolesCore)">
@@ -26,13 +26,13 @@
         </member>
         <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Admin.Init">
             <summary>
-            Initializes the VirtualItemsModule.
+            Initializes the MatchmakingModule.Admin.
             This method is currently empty and can be filled with initial setup logic if needed in the future.
             </summary>
         </member>
         <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Admin.Dispose">
             <summary>
-            Releases all resources used by the VirtualItemsModule.
+            Releases all resources used by the MatchmakingModule.Admin.
             This method is currently empty and can be filled with cleanup logic if needed in the future.
             </summary>
         </member>
