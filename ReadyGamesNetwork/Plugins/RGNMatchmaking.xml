@@ -18,24 +18,6 @@
             Handles critical operations on Matchmaking data
             </summary>
         </member>
-        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Admin.SetRGNCore(RGN.IRGNRolesCore)">
-            <summary>
-            Sets the Ready Games Network (RGN) core reference.
-            </summary>
-            <param name="rgnCore">The RGN core to be set.</param>
-        </member>
-        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Admin.Init">
-            <summary>
-            Initializes the MatchmakingModule.Admin.
-            This method is currently empty and can be filled with initial setup logic if needed in the future.
-            </summary>
-        </member>
-        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Admin.Dispose">
-            <summary>
-            Releases all resources used by the MatchmakingModule.Admin.
-            This method is currently empty and can be filled with cleanup logic if needed in the future.
-            </summary>
-        </member>
         <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Admin.DeleteMatchesByAppIdAsync(System.String)">
             <summary>
             Asynchronously deletes all matches for specific app id
@@ -45,24 +27,6 @@
             A Task representing the asynchronous operation.
             </returns>
             <exception cref="T:System.ArgumentException">Thrown when 'appIdToRemoveTheMatchesFor' is null or empty.</exception>
-        </member>
-        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.SetRGNCore(RGN.IRGNRolesCore)">
-            <summary>
-            Sets the Ready Games Network (RGN) core reference.
-            </summary>
-            <param name="rgnCore">The RGN core to be set.</param>
-        </member>
-        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Init">
-            <summary>
-            Initializes the MatchmakingModule.
-            This method is currently empty and can be filled with initial setup logic if needed in the future.
-            </summary>
-        </member>
-        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Dispose">
-            <summary>
-            Releases all resources used by the MatchmakingModule.
-            This method is currently empty and can be filled with cleanup logic if needed in the future.
-            </summary>
         </member>
         <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.GetJoinOpenMatchesAsync(System.Int32,System.String,System.Threading.CancellationToken)">
             <summary>
