@@ -18,11 +18,12 @@
             Handles critical operations on Matchmaking data
             </summary>
         </member>
-        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Admin.DeleteMatchesByAppIdAsync(System.String)">
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Admin.DeleteMatchesByAppIdAsync(System.String,System.Threading.CancellationToken)">
             <summary>
             Asynchronously deletes all matches for specific app id
             </summary>
             <param name="appIdToRemoveTheMatchesFor">The application id to remove the matches</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
             <returns>
             A Task representing the asynchronous operation.
             </returns>
