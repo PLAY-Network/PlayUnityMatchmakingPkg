@@ -1,2 +1,2 @@
 # RGN Matchmaking
-Package version: 0.16.0-dev.623
+Package version: 0.16.0-dev.624
