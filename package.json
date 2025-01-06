@@ -1,5 +1,5 @@
 ﻿{
-  "name": "io.getready.rgn.matchmaking",
+  "name": "io.play.unity.matchmaking",
   "displayName": "PLAY SDK. Matchmaking",
   "version": "0.16.0",
   "unity": "2020.3",
@@ -26,6 +26,6 @@
     "/ReadyGamesNetwork.meta"
   ],
   "dependencies": {
-    "io.getready.rgn.core": "0.16.0"
+    "io.play.unity.core": "0.16.0"
   }
 }

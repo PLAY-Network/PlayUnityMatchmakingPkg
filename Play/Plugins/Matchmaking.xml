@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>RGNMatchmaking</name>
+        <name>Matchmaking</name>
     </assembly>
     <members>
         <member name="T:RGN.Modules.Matchmaking.MatchmakingModule">
