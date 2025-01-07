@@ -1,0 +1,302 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PlaySDKMatchmaking</name>
+    </assembly>
+    <members>
+        <member name="T:RGN.Modules.Matchmaking.MatchmakingModule">
+            <summary>
+            Provides methods for managing matchmaking in the Ready Games Network (RGN). 
+            This class includes functionalities such as creating, participating in, voting for, and finishing matches.
+            </summary>
+            <remarks>
+            This module is a singleton and implements the <see cref="T:RGN.IRGNModule"/> interface.
+            </remarks>
+        </member>
+        <member name="T:RGN.Modules.Matchmaking.MatchmakingModule.Admin">
+            <summary>
+            Handles critical operations on Matchmaking data
+            </summary>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.Admin.DeleteMatchesByAppIdAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously deletes all matches for specific app id
+            </summary>
+            <param name="appIdToRemoveTheMatchesFor">The application id to remove the matches</param>
+            <param name="cancellationToken">A token to cancel the operation.</param>
+            <returns>
+            A Task representing the asynchronous operation.
+            </returns>
+            <exception cref="T:System.ArgumentException">Thrown when 'appIdToRemoveTheMatchesFor' is null or empty.</exception>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.GetJoinOpenMatchesAsync(System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously gets a list of open matches that the user can join
+            </summary>
+            <param name="limit">An integer indicating the maximum number of matches to retrieve.</param>
+            <param name="startAfter">An optional parameter representing a match id after which to
+            start retrieving the matches. The default is an empty string.</param>
+            <param name="cancellationToken">Cancellation token to cancel the async operation. Optional</param>
+            <returns>
+            A Task that represents the asynchronous operation.
+            The Task result contains a list of objects, which are the open to join matches.
+            </returns>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.GetVoteOpenMatchesAsync(System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously gets a list of open matches that the user can vote. Some matches can have voting enabled.
+            If the voting is enabled the users can vote for the match participants
+            </summary>
+            <param name="limit">An integer indicating the maximum number of matches to retrieve.</param>
+            <param name="startAfter">An optional parameter representing a matches id after which to
+            start retrieving the matches. The default is an empty string.</param>
+            <param name="cancellationToken">Cancellation token to cancel the async operation. Optional</param>
+            <returns>
+            A Task that represents the asynchronous operation.
+            The Task result contains a list of objects, which are the open to vote matches.
+            </returns>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.GetFinishedMatchesAsync(System.Int32,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously gets a list of finished matches
+            </summary>
+            <param name="limit">An integer indicating the maximum number of matches to retrieve.</param>
+            <param name="startAfter">An optional parameter representing a matches id after which to
+            start retrieving the matches. The default is an empty string.</param>
+            <param name="cancellationToken">Cancellation token to cancel the async operation. Optional</param>
+            <returns>
+            A Task that represents the asynchronous operation.
+            The Task result contains a list of objects, which are the finished matches for current app.
+            </returns>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.GetFinishedMatchByIdAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously finished match by provided id. In case the match does not exist, or is from
+            another app throws an Exception.
+            </summary>
+            <param name="matchId">The match ID that is already finished.</param>
+            <param name="cancellationToken">Cancellation token to cancel the async operation. Optional</param>
+            <returns>
+            A Task that represents the asynchronous operation.
+            The Task result contains the finished match data
+            </returns>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.CreateMatchAsync(RGN.Modules.Matchmaking.MatchmakingData,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously creates a matchmaking match based on the provided match configuration.
+            </summary>
+            <param name="matchConfig">The configuration for the match to be created.</param>
+            <param name="participateInOnCreate">Optional parameter that determines whether the user participates
+            in the match upon its creation. Default value is true.</param>
+            <param name="participatePayload">Optional parameter that provides additional data for user participation.
+            Default value is null.</param>
+            <param name="cancellationToken">Optional parameter to enable cancellation of the task.
+            Default value is an unset CancellationToken.</param>
+            <returns>A task that represents the asynchronous operation.
+            The task result contains an object of <see cref="T:RGN.Modules.Matchmaking.MatchmakingData"/> representing the created match.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when matchConfig is null.</exception>
+            <exception cref="T:System.OperationCanceledException">Thrown when the operation is cancelled via the cancellationToken.</exception>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.ParticipateInMatchAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously participates in a matchmaking match identified by the provided match ID.
+            </summary>
+            <param name="matchId">The ID of the match to participate in.</param>
+            <param name="participantPayload">Optional parameter that provides additional data for user participation.
+            Default value is null.</param>
+            <param name="cancellationToken">Optional parameter to enable cancellation of the task.
+            Default value is an unset CancellationToken.</param>
+            <returns>A task that represents the asynchronous operation.
+            The task result is the ID of the match that the user participated in.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when matchId is null or empty.</exception>
+            <exception cref="T:System.OperationCanceledException">Thrown when the operation is cancelled via the cancellationToken.</exception>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.StartMatchAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously starts a matchmaking match identified by the provided match ID.
+            </summary>
+            <param name="matchId">The ID of the match to start.</param>
+            <param name="cancellationToken">Optional parameter to enable cancellation of the task.
+            Default value is an unset CancellationToken.</param>
+            <returns>A task that represents the asynchronous operation.
+            The task result is the ID of the match that has been started.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when matchId is null or empty.</exception>
+            <exception cref="T:System.OperationCanceledException">Thrown when the operation is cancelled via the cancellationToken.</exception>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.VoteForMatchAsync(System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously votes for a matchmaking match identified by the provided match ID and participant ID.
+            </summary>
+            <param name="matchId">The ID of the match to vote for.</param>
+            <param name="participantId">The ID of the participant casting the vote.</param>
+            <param name="cancellationToken">Optional parameter to enable cancellation of the task.
+            Default value is an unset CancellationToken.</param>
+            <returns>A task that represents the asynchronous operation.
+            The task result is the ID of the match for which the vote has been cast.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when matchId or participantId is null or empty.</exception>
+            <exception cref="T:System.OperationCanceledException">Thrown when the operation is cancelled via the cancellationToken.</exception>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.SubmitMatchScoreAsync(System.String,System.Int64,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously submits the score for a matchmaking match identified by the provided match ID.
+            </summary>
+            <param name="matchId">The ID of the match for which the score is being submitted.</param>
+            <param name="score">The score to be submitted for the match.</param>
+            <param name="cancellationToken">Optional parameter to enable cancellation of the task.
+            Default value is an unset CancellationToken.</param>
+            <returns>A task that represents the asynchronous operation.
+            The task result is the ID of the match for which the score has been submitted.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when matchId is null or empty.</exception>
+            <exception cref="T:System.OperationCanceledException">Thrown when the operation is cancelled via the cancellationToken.</exception>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingModule.FinishMatchAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Asynchronously finishes a matchmaking match identified by the provided match ID.
+            </summary>
+            <param name="matchId">The ID of the match to finish.</param>
+            <param name="cancellationToken">Optional parameter to enable cancellation of the task.
+            Default value is an unset CancellationToken.</param>
+            <returns>A task that represents the asynchronous operation.
+            The task result is the ID of the match that has been finished.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when matchId is null or empty.</exception>
+            <exception cref="T:System.OperationCanceledException">Thrown when the operation is cancelled via the cancellationToken.</exception>
+        </member>
+        <member name="T:RGN.Modules.Matchmaking.MatchmakingData">
+            <summary>
+            Encapsulates all data necessary to create, manage and finalize a matchmaking process in the Ready Games Network (RGN).
+            This data includes match configuration, participant data, voting data, and match lifecycle timestamps.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.id">
+            <summary>
+            Unique identifier of the matchmaking process.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.appId">
+            <summary>
+            Identifier of the application where the matchmaking process is running.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.type">
+            <summary>
+            Specifies the type of the match. Currently, only "default" is supported.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.finishType">
+            <summary>
+            Defines how the match is finished.
+            It can be "manual" (requires calling <see cref="M:RGN.Modules.Matchmaking.MatchmakingModule.FinishMatchAsync(System.String,System.Threading.CancellationToken)"/> method), 
+            "scoreSubmitBased" (automatically finishes once all participants submit their scores by using - this is default value
+            <see cref="M:RGN.Modules.Matchmaking.MatchmakingModule.SubmitMatchScoreAsync(System.String,System.Int64,System.Threading.CancellationToken)"/> method),
+            or "timeBased" (automatically finishes based on time condition).
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.startType">
+            <summary>
+            Defines how the match is started.
+            It can be "manual" (needs to be started by calling <see cref="M:RGN.Modules.Matchmaking.MatchmakingModule.StartMatchAsync(System.String,System.Threading.CancellationToken)"/> method), 
+            "matchFillBased" (automatically starts once all participant slots are filled) - this is default value,
+            or "timeBased" (automatically starts based on time condition).
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.maxUsers">
+            <summary>
+            Specifies the maximum number of users that can participate in the matchmaking process. Default is 2.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.isStarted">
+            <summary>
+            Indicates whether the matchmaking process has been started.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.votingEnabled">
+            <summary>
+            Determines whether voting is enabled during the matchmaking process.
+            Default is false
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.oncePerUserVoting">
+            <summary>
+            Specifies whether a user can vote only once during the matchmaking process.
+            Default is true
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.createdBy">
+            <summary>
+            The identifier of the user who initiated the matchmaking process.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.updatedBy">
+            <summary>
+            The identifier of the user who updated the matchmaking process data.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.createdAt">
+            <summary>
+            The timestamp representing when the match was created.
+            in milliseconds since midnight, January 1, 1970 UTC.
+            Refer to <see cref="T:RGN.Utility.DateTimeUtility"/> for helper methods.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.updatedAt">
+            <summary>
+            The timestamp representing when the matchmaking data was last updated.
+            in milliseconds since midnight, January 1, 1970 UTC.
+            Refer to <see cref="T:RGN.Utility.DateTimeUtility"/> for helper methods.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.participants">
+            <summary>
+            A list of identifiers of users who are participating in the matchmaking process.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.votes">
+            <summary>
+            A list of votes cast during the matchmaking process.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.participantsScore">
+            <summary>
+            A dictionary mapping the participant identifiers to their respective scores in the matchmaking process.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.participantsPayload">
+            <summary>
+            A dictionary mapping the participant identifiers to their respective optional payload data in the matchmaking process.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.MatchmakingData.participationFees">
+            <summary>
+            A list of participation fees for the matchmaking process.
+            The fees are deducted when the user joins the match(ParticipateInMatch).
+            </summary>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.MatchmakingData.ToString">
+            <summary>
+            Returns a string that represents the current matchmaking data object.
+            </summary>
+            <returns>A string representation of the current matchmaking data object.</returns>
+        </member>
+        <member name="T:RGN.Modules.Matchmaking.Vote">
+            <summary>
+            Represents a vote in the matchmaking process.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.Vote.voterId">
+            <summary>
+            Gets or sets the identifier of the voter.
+            </summary>
+        </member>
+        <member name="F:RGN.Modules.Matchmaking.Vote.participantId">
+            <summary>
+            Gets or sets the identifier of the participant that the vote is for.
+            </summary>
+        </member>
+        <member name="M:RGN.Modules.Matchmaking.Vote.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+    </members>
+</doc>
